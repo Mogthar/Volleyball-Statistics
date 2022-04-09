@@ -10,12 +10,15 @@ public class Defence : MonoBehaviour
     [SerializeField] GameObject[] attackButtons;
     [SerializeField] public GameObject hitMark;
     [SerializeField] GameObject court;
+    [SerializeField] float hitmarkAlpha = 0.5f;
     
     // a list to store the commmands
     private List<CreateHitMarkCommand> commandList = new List<CreateHitMarkCommand>();
 
     // an array of lists to store new hit marks
     private List<GameObject>[] hitMarkList;
+
+    private bool[] buttonState;
     
     // command class that creates a new hit mark; used for the command pattern
     public class CreateHitMarkCommand
@@ -65,9 +68,11 @@ public class Defence : MonoBehaviour
     {
         // initialize the array of lists that holds hit marks corresponding to different buttons
         hitMarkList = new List<GameObject>[attackButtons.Length];
+        buttonState = new bool[attackButtons.Length];
         for(int i = 0; i < attackButtons.Length; i++)
         {
             hitMarkList[i] = new List<GameObject>();
+            buttonState[i] = false;
         }
     }
 
@@ -77,11 +82,74 @@ public class Defence : MonoBehaviour
         
     }
 
-    public void OnButtonPress()
+    public void OnAttackButtonPress(GameObject attackButton)
     {
-        Debug.Log("button pressed");
+        int indexOfAttackButton = Array.IndexOf(attackButtons, attackButton);
+        ToggleButtons(indexOfAttackButton);
+        // switch the state of the toggled button
+
+        for(int i = 0; i < attackButtons.Length; i++)
+        {
+            for(int j = 0; j < hitMarkList[i].Count; j++)
+            {
+                SpriteRenderer hitmarkSpriteRenderer = hitMarkList[i][j].GetComponent<SpriteRenderer>();
+                Color originalColor = hitmarkSpriteRenderer.color;
+                if (buttonState[i])
+                {
+                    hitmarkSpriteRenderer.color = new Color (originalColor.r, originalColor.g, originalColor.b, 1.0f);
+                }
+                else
+                {
+                    hitmarkSpriteRenderer.color = new Color (originalColor.r, originalColor.g, originalColor.b, hitmarkAlpha);
+                }   
+            }
+        }
     }
 
+    private void ToggleButtons(int indexOfPressedButton)
+    {
+        if(buttonState[indexOfPressedButton] & !AreAllButtonsToggled())
+        {
+            ToggleAllButtons();
+        }
+        else
+        {
+            ToggleOneButton(indexOfPressedButton);
+        }
+    }
+
+    private bool AreAllButtonsToggled()
+    {
+        for(int i = 0; i < buttonState.Length; i++)
+        {
+            if(!buttonState[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private void ToggleAllButtons()
+    {
+        for(int i = 0; i < buttonState.Length; i++)
+        {
+            buttonState[i] = true;
+        }
+    }
+    private void ToggleOneButton(int indexOfToggledButton)
+    {
+        for(int i = 0; i < buttonState.Length; i++)
+        {
+            if(i == indexOfToggledButton)
+            {
+                buttonState[i] = true;
+            }
+            else
+            {
+                buttonState[i] = false;
+            }
+        }
+    }
     public void CreateHitMark(Vector3 position, GameObject attackButton)
     {
         // check if arrow is above the pitch before creating the mark
@@ -119,7 +187,6 @@ public class Defence : MonoBehaviour
         // go through hitmarks and destroy them
         for(int i = 0; i < attackButtons.Length; i++)
         {
-            Debug.Log("The number of buttons is: " + attackButtons.Length.ToString());
             for(int j = 0; j < hitMarkList[i].Count; j++)
             {
                 Destroy(hitMarkList[i][j]);
