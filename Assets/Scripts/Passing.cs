@@ -128,6 +128,7 @@ public class Passing : MonoBehaviour
     }
     public void ResetPassing()
     {
-        
+        scorer.ResetScorer();
+        UpdateGraphics();
     }
 }

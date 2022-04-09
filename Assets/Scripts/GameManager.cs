@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
         scorer = FindObjectOfType<Scorer>();
         sessionScreen = FindObjectOfType<SessionScreen>();
         defence = FindObjectOfType<Defence>();
-
+    }
+    void Start() 
+    {
         mainScreen.gameObject.SetActive(true);
         sessionScreen.gameObject.SetActive(false);
         passing.gameObject.SetActive(false);
@@ -27,7 +29,6 @@ public class GameManager : MonoBehaviour
     // main screen controls
     public void OnNewSessionButtonPress()
     {
-        scorer.ResetScorer();
         defence.ResetDefence();
         passing.ResetPassing();
 

@@ -61,7 +61,7 @@ public class Defence : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         // initialize the array of lists that holds hit marks corresponding to different buttons
         hitMarkList = new List<GameObject>[attackButtons.Length];
@@ -119,6 +119,7 @@ public class Defence : MonoBehaviour
         // go through hitmarks and destroy them
         for(int i = 0; i < attackButtons.Length; i++)
         {
+            Debug.Log("The number of buttons is: " + attackButtons.Length.ToString());
             for(int j = 0; j < hitMarkList[i].Count; j++)
             {
                 Destroy(hitMarkList[i][j]);
