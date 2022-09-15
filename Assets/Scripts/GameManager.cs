@@ -2,30 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(UIManager))]
+[RequireComponent(typeof(DataManager))]
 public class GameManager : MonoBehaviour
 {
-    Passing passing;
-    MainScreen mainScreen;
-    Scorer scorer;
-    SessionScreen sessionScreen;
-    Defence defence;
+    public static UIManager UI {get; private set;}
+    public static DataManager Data {get; private set;}
 
-    void Awake()
-    {
-        passing = FindObjectOfType<Passing>();
-        mainScreen = FindObjectOfType<MainScreen>();
-        scorer = FindObjectOfType<Scorer>();
-        sessionScreen = FindObjectOfType<SessionScreen>();
-        defence = FindObjectOfType<Defence>();
-    }
-    void Start() 
-    {
-        mainScreen.gameObject.SetActive(true);
-        sessionScreen.gameObject.SetActive(false);
-        passing.gameObject.SetActive(false);
-        defence.gameObject.SetActive(false);
+    void Awake(){
+      UI = GetComponent<UIManager>();
+      Data = GetComponent<DataManager>();
     }
 
+
+    void Start()
+    {
+
+    }
+    
+
+    /*
     // main screen controls
     public void OnNewSessionButtonPress()
     {
@@ -67,7 +63,7 @@ public class GameManager : MonoBehaviour
         defence.gameObject.SetActive(true);
     }
 
-    
+
     // passing screen controls
     public void OnBackFromPassingScreenButtonPress()
     {
@@ -83,5 +79,6 @@ public class GameManager : MonoBehaviour
         defence.gameObject.SetActive(false);
         sessionScreen.gameObject.SetActive(true);
     }
+    */
 
 }

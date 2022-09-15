@@ -1,0 +1,54 @@
+GameManager
+--> Sound manager : Button clicks
+--> UI manager/controller? : Turn on, off screens; Control flow; Have flow between sections without going via menu
+--> Data manager
+	--> Sub_modules for each thing
+		--> Passing : Direction of their serve, pop up screen with passing score
+			--> store hit mark as object (unique colour for success) maybe in a dictionary key == quality of pass, value<hitMark>; dictionary of passes - key == score, value<int> = number, might not be necessary and can be handled via lenght of the other dictionary
+			--> store commands for creating marks (empty these on load)
+		--> Attacking : Direction of our attack, pop up screen with how successful (point, defended, badset)
+			--> store hit mark of attack for each position (dictionary of key == position, value<hitMark>), some stats dictionary for each position
+			--> store number of blocks and out hits !!! for this reason it might be better to implement the command pattern rather than having the hit mark handle it!
+			--> store commands for creating marks
+		--> Serving : Direction of our serve, pop up with how successful it was
+			--> store hit mark with colour indicating how easy/difficult it was. Again dictionary with key == quality of their pass, value<hitMark>
+			--> store commands for creating marks
+		--> Defence : Direction of their attack, pop up with defended or not
+			--> store hti mark for their attack with success rate of defence for each direction of hit
+			--> hit marks can be attacks or tips		
+		--> ## Have a command for each submodule that creates a mark and adds to stats and then an undo for reach. Have a command
+		    called create hit mark as a parent class and then derive from it for each respective submodule
+		--> ## hit mark should also be one type of monobehaviour with position, colour etc
+		--> ## have a generic submodule class
+	--> Saving data
+	--> Loading data
+
+UI
+--> Main screen
+--> Loading screen
+	--> pop up - loading done
+--> Session overview
+--> Passing
+	--> pop up - quality of pass
+	--> serve marks
+	--> show our average score and distribution of passes and their success rate
+	--> buttons for going directly to the other screens as well as main menu
+--> Attacking
+	--> Buttons for different positions // each button derives from the same script with field for tag (oppo, middle etc which can be an enum) and its own line renderer (require comp of type) + reference to the overarching screen/controller?
+	--> Attack success percentages (overall and then for each specific attacking position with a fraction of tips etc)
+	--> attack marks
+	--> Pop up - quality of attack
+--> Serving
+	--> Hit marks
+	--> one Big button for dragging the serve
+	--> Stats for our serves (aces, out, nets)
+	--> pop up - quality of serve
+--> Defence
+	--> Buttons for different attack positions
+	--> Hit marks
+	--> stats for various attack positions 
+	--> pop up- quality of defence / their attack
+--> Overall stats
+	--> not that relevant
+
+--> ## Have a pop up main class script and then the individual pop ups inheriting from it
