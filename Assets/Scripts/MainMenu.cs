@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private NewSessionPopUp sessionPopUp;
     // Start is called before the first frame update
     void Start()
     {
-
+        sessionPopUp.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,10 +26,14 @@ public class MainMenu : MonoBehaviour
     }
 
     public void OnNewSession(){
-
+        sessionPopUp.gameObject.SetActive(true);
     }
 
     public void OnLoadSession(){
-      
+
+    }
+
+    public void ClosePopUp(){
+        sessionPopUp.gameObject.SetActive(false);
     }
 }

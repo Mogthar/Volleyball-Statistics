@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class SessionManager : MonoBehaviour
 {
-    [SerializeField] private MainMenu mainMenu;
+    public string currentSessionName;
     // Start is called before the first frame update
     void Start()
     {
-        mainMenu.gameObject.SetActive(true);
-        // disable rest of windows
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void StartNewSession(string newSessionName){
+      currentSessionName = newSessionName;
     }
 }

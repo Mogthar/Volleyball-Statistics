@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(UIManager))]
-[RequireComponent(typeof(DataManager))]
+[RequireComponent(typeof(SessionManager))]
 public class GameManager : MonoBehaviour
 {
     public static UIManager UI {get; private set;}
-    public static DataManager Data {get; private set;}
+    public static SessionManager Session {get; private set;}
 
     void Awake(){
       UI = GetComponent<UIManager>();
-      Data = GetComponent<DataManager>();
+      Session = GetComponent<SessionManager>();
     }
 
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
-    
+
 
     /*
     // main screen controls
