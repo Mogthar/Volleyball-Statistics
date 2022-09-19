@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SessionManager : MonoBehaviour
 {
-    public string currentSessionName;
+    public string currentSessionName {get; private set;}
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +19,14 @@ public class SessionManager : MonoBehaviour
 
     public void StartNewSession(string newSessionName){
       currentSessionName = newSessionName;
+      RestartDataModules();
+    }
+
+    public void SaveCurrentSession(){
+      
+    }
+
+    private void RestartDataModules(){
+
     }
 }

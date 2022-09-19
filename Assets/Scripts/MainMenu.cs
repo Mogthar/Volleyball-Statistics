@@ -2,19 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : GameMenu
 {
     [SerializeField] private NewSessionPopUp sessionPopUp;
     // Start is called before the first frame update
     void Start()
     {
-        sessionPopUp.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        ClosePopUp();
     }
 
     public void OnQuit(){
@@ -36,4 +30,9 @@ public class MainMenu : MonoBehaviour
     public void ClosePopUp(){
         sessionPopUp.gameObject.SetActive(false);
     }
+
+    public override void OnTransitionOut() {
+        ClosePopUp();
+    }
+
 }

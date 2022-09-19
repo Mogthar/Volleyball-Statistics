@@ -24,7 +24,9 @@ GameManager
 	--> Loading data
 
 UI
---> Main screen
+--> Main screen (-)
+TODO - deal with loading pop up
+	--> pop up for creating new session (-)
 --> Loading screen
 	--> pop up - loading done
 --> Session overview
@@ -52,3 +54,7 @@ UI
 	--> not that relevant
 
 --> ## Have a pop up main class script and then the individual pop ups inheriting from it
+
+
+TODO (maybe):
+
