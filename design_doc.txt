@@ -1,6 +1,6 @@
 GameManager
 --> Sound manager : Button clicks
---> UI manager/controller? : Turn on, off screens; Control flow; Have flow between sections without going via menu
+--> UI manager/controller? : Turn on, off screens; Control flow; Have flow between sections without going via menu (-)
 --> Data manager
 	--> Sub_modules for each thing
 		--> Passing : Direction of their serve, pop up screen with passing score
@@ -57,4 +57,12 @@ TODO - deal with loading pop up
 
 
 TODO (maybe):
+
+IDEAS:
+how to do transitions - either have the ui manager have static references to the menus and menus can then call
+UI.Transition(original, target){
+original.setactive((false)
+target.setactive(true)
+
+or there can be a messenger system where the menus would send a message transition(self, target)
 

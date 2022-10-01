@@ -14,22 +14,22 @@ public class SessionMenu : GameMenu
         ClosePopUp();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     public void ClosePopUp(){
         quitPopUp.gameObject.SetActive(false);
     }
 
-    public void OnQuitSession(){
-        quitPopUp.gameObject.SetActive(true);
-    }
-
     private void ChangeSessionName(string newName){
         sessionNameText.text = newName;
+    }
+
+    public void OnPassing(){
+        GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.passingMenu);
+    }
+
+    public void OnQuitSession(){
+        quitPopUp.gameObject.SetActive(true);
     }
 
     public override void OnTransitionIn() {

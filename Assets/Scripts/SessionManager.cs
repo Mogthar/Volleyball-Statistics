@@ -23,10 +23,11 @@ public class SessionManager : MonoBehaviour
     }
 
     public void SaveCurrentSession(){
-      
+
     }
 
     private void RestartDataModules(){
-
+        // go through modules and assign new objects
+        
     }
 }

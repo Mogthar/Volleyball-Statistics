@@ -6,12 +6,18 @@ public class UIManager : MonoBehaviour
 {
     public MainMenu mainMenu; // {get; private set;}
     public SessionMenu sessionMenu;
+    public PassingMenu passingMenu;
+    public DefenceMenu defenceMenu;
+
+    public Canvas appCanvas;
     // Start is called before the first frame update
     void Start()
     {
         mainMenu.gameObject.SetActive(true);
 
         sessionMenu.gameObject.SetActive(false);
+        passingMenu.gameObject.SetActive(false);
+        defenceMenu.gameObject.SetActive(false);
     }
 
     // create a method that goes through a list of menu objects (need to define a parent menu and have the rest inherit)
