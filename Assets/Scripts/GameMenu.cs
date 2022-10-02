@@ -11,4 +11,8 @@ public class GameMenu : MonoBehaviour
     public virtual void OnTransitionIn(){
 
     }
+
+    public virtual void OnSuccesfullArrowDrag(Vector3 arrowPosition){
+      
+    }
 }

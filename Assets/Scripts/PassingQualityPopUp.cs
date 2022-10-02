@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PassingQualityPopUp : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Vector3 currentMarkerPosition;
+
+    public void OnPassingScoreEntry(int passingScore){
+        GameManager.UI.passingMenu.CreateHitMark(currentMarkerPosition, passingScore);
+        GameManager.UI.passingMenu.ClosePopUp();
+    }
+
+    public void OnCancel(){
+        GameManager.UI.passingMenu.ClosePopUp();
+    }
 
 }

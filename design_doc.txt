@@ -55,6 +55,9 @@ TODO - deal with loading pop up
 
 --> ## Have a pop up main class script and then the individual pop ups inheriting from it
 
+DEBUG:
+--> ## Need to make sure that when pop ups are activated all the other buttons on the menu are disabled!!!
+
 
 TODO (maybe):
 

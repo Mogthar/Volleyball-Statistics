@@ -11,6 +11,8 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private RectTransform _indicatorRectTransform;
     private float _indicatorHeight;
 
+    [SerializeField] private GameMenu parentMenu;
+
     public void OnBeginDrag(PointerEventData data)
     {
         Vector3 pointerPosition = data.position;
@@ -49,15 +51,13 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         GraphicRaycaster canvasRaycaster = GameManager.UI.appCanvas.GetComponent<GraphicRaycaster>();
         List<RaycastResult> raycastHitList = new List<RaycastResult>();
-        Court courtTarget = null;
-
         canvasRaycaster.Raycast(data, raycastHitList);
         foreach(RaycastResult raycastHit in raycastHitList){
-            if(ray)
-            courtTarget = raycastHit.gameObject.GetComponent<Court>();
-        }
-        if(courtTarget != null){
-            Debug.Log("You hit the court!");
+            if(raycastHit.gameObject.TryGetComponent(out Court court))
+            {
+                Debug.Log("You hit the court");
+                parentMenu.OnSuccesfullArrowDrag(data.position);
+            }
         }
     }
 }
