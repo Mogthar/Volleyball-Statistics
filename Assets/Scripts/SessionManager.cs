@@ -12,7 +12,8 @@ public class SessionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        passingData = new PassingData(_passingHitMark);
+        passingData = new PassingData(_passingHitMark, GameManager.UI.passingMenu);
+        _dataModules = new List<DataModule>();
 
         _dataModules.Add(passingData);
     }

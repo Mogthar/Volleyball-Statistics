@@ -13,6 +13,10 @@ public class GameMenu : MonoBehaviour
     }
 
     public virtual void OnSuccesfullArrowDrag(Vector3 arrowPosition){
-      
+
+    }
+
+    public virtual void UpdateGraphics(){
+        
     }
 }
