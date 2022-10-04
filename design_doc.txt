@@ -1,7 +1,7 @@
 GameManager
 --> Sound manager : Button clicks
 --> UI manager/controller? : Turn on, off screens; Control flow; Have flow between sections without going via menu (-)
---> Data manager
+--> Session manager
 	--> Sub_modules for each thing
 		--> Passing : Direction of their serve, pop up screen with passing score
 			--> store hit mark as object (unique colour for success) maybe in a dictionary key == quality of pass, value<hitMark>; dictionary of passes - key == score, value<int> = number, might not be necessary and can be handled via lenght of the other dictionary

@@ -881,7 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passingPopUp: {fileID: 1905661154}
-  hitMarkPrefab: {fileID: 1034633442793335025, guid: 686c59c7e97e0a048ac89655f20b6c6e, type: 3}
+  hitMarkParent: {fileID: 1362792662}
 --- !u!224 &333778644 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1375985023446532417, guid: 33e24ea668afc424a9348eb445207563, type: 3}
@@ -1963,7 +1963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1375985023446532416, guid: 33e24ea668afc424a9348eb445207563, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UndoLastCommand
+      value: Undo
       objectReference: {fileID: 0}
     - target: {fileID: 1375985023446532416, guid: 33e24ea668afc424a9348eb445207563, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3525,6 +3525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a9ea1d8ced83e4faf9d786e2425f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _passingHitMark: {fileID: 1034633442793335025, guid: 686c59c7e97e0a048ac89655f20b6c6e, type: 3}
 --- !u!114 &1087499614
 MonoBehaviour:
   m_ObjectHideFlags: 0

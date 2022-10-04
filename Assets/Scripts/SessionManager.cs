@@ -5,10 +5,16 @@ using UnityEngine;
 public class SessionManager : MonoBehaviour
 {
     public string currentSessionName {get; private set;}
+    public PassingData passingData;
+    private List<DataModule> _dataModules;
+
+    [SerializeField] private GameObject _passingHitMark;
     // Start is called before the first frame update
     void Start()
     {
+        passingData = new PassingData(_passingHitMark);
 
+        _dataModules.Add(passingData);
     }
 
     // Update is called once per frame
@@ -18,8 +24,8 @@ public class SessionManager : MonoBehaviour
     }
 
     public void StartNewSession(string newSessionName){
-      currentSessionName = newSessionName;
-      RestartDataModules();
+        currentSessionName = newSessionName;
+        RestartDataModules();
     }
 
     public void SaveCurrentSession(){
@@ -28,6 +34,6 @@ public class SessionManager : MonoBehaviour
 
     private void RestartDataModules(){
         // go through modules and assign new objects
-        
+
     }
 }

@@ -1,25 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DataModule
 {
-    private List<Command> commandHistory;
+    protected List<Command> _commandList;
+    protected GameObject _hitMarkPrefab;
 
-    public DataModule(){
-      commandHistory = new List<Command>();
+    public DataModule(GameObject hitMarkPrefab){
+      _commandList = new List<Command>();
+      _hitMarkPrefab = hitMarkPrefab;
     }
 
-    public void ExecuteCommand (Command command){
-        command.Execute();
-        commandHistory.Add(command);
-    }
-
-    public void UndoCommand(){
-        int numCommands = commandHistory.Count;
-        if(numCommands > 0){
-            commandHistory[numCommands - 1].Undo();
-            commandHistory.RemoveAt(numCommands - 1);
+    public void UndoLastCommand(){
+        if(_commandList.Count > 0){
+            _commandList.Last().Undo();
+            _commandList.RemoveAt(_commandList.Count - 1);
         }
     }
 }

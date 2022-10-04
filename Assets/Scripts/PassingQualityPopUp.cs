@@ -7,7 +7,8 @@ public class PassingQualityPopUp : MonoBehaviour
     public Vector3 currentMarkerPosition;
 
     public void OnPassingScoreEntry(int passingScore){
-        GameManager.UI.passingMenu.CreateHitMark(currentMarkerPosition, passingScore);
+        //GameManager.UI.passingMenu.CreateHitMark(currentMarkerPosition, passingScore);
+        GameManager.Session.passingData.CreateHitMark(currentMarkerPosition, passingScore);
         GameManager.UI.passingMenu.ClosePopUp();
     }
 

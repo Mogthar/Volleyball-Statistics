@@ -9,17 +9,17 @@ public class CreateHitMarkCommand : Command
     private Vector3 _hitMarkPosition;
     private int _hitMarkScore;
     private GameObject _hitMarkPrefab;
-    private GameMenu _parentMenu;
+    private GameObject _parent;
 
-    public CreateHitMarkCommand(Vector3 position, int score, GameObject prefab, GameMenu menu){
+    public CreateHitMarkCommand(Vector3 position, int score, GameObject prefab, GameObject parent){
         _hitMarkPosition = position;
         _hitMarkScore = score;
         _hitMarkPrefab = prefab;
-        _parentMenu = menu;
+        _parent = parent;
     }
 
     public override void Execute(){
-        _hitMark = Object.Instantiate(_hitMarkPrefab, _hitMarkPosition, Quaternion.identity, _parentMenu.transform);
+        _hitMark = Object.Instantiate(_hitMarkPrefab, _hitMarkPosition, Quaternion.identity, _parent.transform);
     }
 
     public override void Undo(){
