@@ -8,6 +8,9 @@ public class PassingMenu : GameMenu
 {
     [SerializeField] PassingQualityPopUp passingPopUp;
     [SerializeField] TMP_Text averageScoreText;
+    [SerializeField] GameObject[] graphColumns;
+    [SerializeField] TMP_Text[] graphColumnPercentages;
+
     public GameObject hitMarkParent;
 
     private List<Command> _commandList;
@@ -19,7 +22,7 @@ public class PassingMenu : GameMenu
     }
 
     public override void UpdateGraphics(){
-        //UpdateGraphColumns();
+        UpdateGraphColumns();
         UpdateAverageScoreText();
     }
 
@@ -28,13 +31,12 @@ public class PassingMenu : GameMenu
         averageScoreText.text = "Avg score: " + GameManager.Session.passingData.CalculateAverageScore().ToString("0.00");
     }
 
-    /*
     void UpdateGraphColumns()
     {
-        float[] passingPercentages = GameManager.Session.passingData.CalculatePassingPercentages();
+        float[] passingPercentages = GameManager.Session.passingData.CalculatePassingPercentages(graphColumns.Length);
         float maxPercentage = 0.0f;
-        // find the max percentage
-        for(int i = 0; i < 4; i++)
+        // find the max percentage - there should be a function for that!!!
+        for(int i = 0; i < graphColumns.Length; i++)
         {
             if(passingPercentages[i] > maxPercentage)
             {
@@ -42,7 +44,7 @@ public class PassingMenu : GameMenu
             }
         }
 
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < graphColumns.Length; i++)
         {
             graphColumnPercentages[i].text = (100 * passingPercentages[i]).ToString("0.0") + "%";
             // this scales the columns so that the max one is filled all the way to the top irrespective of the percentage
@@ -56,7 +58,6 @@ public class PassingMenu : GameMenu
             }
         }
     }
-    */
 
     public override void OnSuccesfullArrowDrag(Vector3 arrowPosition){
         passingPopUp.currentMarkerPosition = arrowPosition;

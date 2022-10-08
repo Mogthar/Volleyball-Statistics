@@ -40,4 +40,9 @@ public class DataModule
         // need to add checking for existence of hit mark
         _hitMarkCollection[score].Remove(hitMark);
     }
+
+    // WHAT FORMAT IS COLOUR???
+    public void ScoreToColourConversion(int hitMarkScore){
+
+    }
 }

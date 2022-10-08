@@ -30,16 +30,20 @@ public class PassingData : DataModule
         return 0.0f;
     }
 
-    /*
-    public float[] CalculatePassingPercentages(){
-        float[] passingPercentages = new float[_hitMarkCollection.Keys.Count];
+    public float[] CalculatePassingPercentages(int numDistinctScoreValues){
+        float[] passingPercentages = new float[numDistinctScoreValues];
         int totalNumberOfPasses = CalculateTotalNumberOfPasses();
 
-        for(int i = 0; i < passingPercentages.Length; i++){
-
+        for(int scoreValue = 0; i < numDistinctScoreValues; i++){
+            int numPassesPerScore = 0;
+            // check if i is a key in _hitMarkCollection
+            if(scoreValue in _hitMarkCollection.Keys){
+                numPassesPerScore = _hitMarkCollection[scoreValue].Count;
+            }
+            passingPercentages[scoreValue] = (float)numPassesPerScore / totalNumberOfPasses;
         }
+        return passingPercentages;
     }
-    */
 
     public int CalculateTotalNumberOfPasses(){
         int numberOfPasses = 0;
@@ -47,6 +51,22 @@ public class PassingData : DataModule
             numberOfPasses += _hitMarkCollection[score].Count;
         }
         return numberOfPasses;
+    }
+
+    public override void ScoreToColourConversion(int hitMarkScore){
+        switch(hitMarkScore){
+            case 0:
+                return 0;
+            case 1:
+                return 0;
+            case 2:
+                return 0;
+            case 3:
+                return 0;
+            default:
+                return 0;
+
+        }
     }
 
 }

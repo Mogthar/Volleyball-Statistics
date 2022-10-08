@@ -23,6 +23,9 @@ public class CreateHitMarkCommand : Command
     public override void Execute(){
         _hitMark = Object.Instantiate(_hitMarkPrefab, _hitMarkPosition, Quaternion.identity, _parent.transform);
         _dataModule.AddHitMark(_hitMarkScore, _hitMark);
+
+        // NEEDS TO BE CHECKED
+        _hitMark.colour = _dataModule.ScoreToColourConversion(_hitMarkScore);
     }
 
     public override void Undo(){
