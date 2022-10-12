@@ -2,23 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PassingMenu : GameMenu
 {
     [SerializeField] PassingQualityPopUp passingPopUp;
-    [SerializeField] TMP_Text averageScoreText;
-    [SerializeField] GameObject[] graphColumns;
-    [SerializeField] TMP_Text[] graphColumnPercentages;
+    [SerializeField] private TMP_Text averageScoreText;
+    [SerializeField] private Slider[] graphColumns;
+    [SerializeField] private TMP_Text[] graphColumnPercentages;
 
     public GameObject hitMarkParent;
-
-    private List<Command> _commandList;
     // Start is called before the first frame update
     void Start()
     {
         passingPopUp.gameObject.SetActive(false);
-        _commandList = new List<Command>();
     }
 
     public override void UpdateGraphics(){
@@ -72,12 +70,15 @@ public class PassingMenu : GameMenu
         passingPopUp.gameObject.SetActive(false);
     }
 
+    public void OnBack(){
+        GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.sessionMenu);
+    }
 
     public override void OnTransitionOut(){
-
+        ClosePopUp();
     }
 
     public override void OnTransitionIn(){
-
+        UpdateGraphics();
     }
 }

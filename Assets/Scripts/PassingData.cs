@@ -34,13 +34,18 @@ public class PassingData : DataModule
         float[] passingPercentages = new float[numDistinctScoreValues];
         int totalNumberOfPasses = CalculateTotalNumberOfPasses();
 
-        for(int scoreValue = 0; i < numDistinctScoreValues; i++){
+        for(int scoreValue = 0; scoreValue < numDistinctScoreValues; scoreValue++){
             int numPassesPerScore = 0;
             // check if i is a key in _hitMarkCollection
-            if(scoreValue in _hitMarkCollection.Keys){
+            if(_hitMarkCollection.ContainsKey(scoreValue)){
                 numPassesPerScore = _hitMarkCollection[scoreValue].Count;
             }
-            passingPercentages[scoreValue] = (float)numPassesPerScore / totalNumberOfPasses;
+            if(totalNumberOfPasses > 0){
+                passingPercentages[scoreValue] = (float)numPassesPerScore / totalNumberOfPasses;
+            } else {
+                passingPercentages[scoreValue] = 0.0f;
+            }
+
         }
         return passingPercentages;
     }
@@ -53,19 +58,18 @@ public class PassingData : DataModule
         return numberOfPasses;
     }
 
-    public override void ScoreToColourConversion(int hitMarkScore){
+    public override Color ScoreToColourConversion(int hitMarkScore){
         switch(hitMarkScore){
-            case 0:
-                return 0;
-            case 1:
-                return 0;
-            case 2:
-                return 0;
-            case 3:
-                return 0;
             default:
-                return 0;
-
+                return new Color(1.0f, 0.0f, 0.0f);
+            case 0:
+                return new Color(0.0f, 0.0f, 0.0f);
+            case 1:
+                return new Color(1.0f, 0.0f, 0.0f);
+            case 2:
+                return new Color(1.0f, 1.0f, 0.0f);
+            case 3:
+                return new Color(0.0f, 1.0f, 0.0f);
         }
     }
 

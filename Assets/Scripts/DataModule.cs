@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class DataModule
@@ -42,7 +43,7 @@ public class DataModule
     }
 
     // WHAT FORMAT IS COLOUR???
-    public void ScoreToColourConversion(int hitMarkScore){
-
+    public virtual Color ScoreToColourConversion(int hitMarkScore){
+        return new Color(1.0f, 0.0f, 0.0f);
     }
 }

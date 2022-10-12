@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreateHitMarkCommand : Command
 {
@@ -25,7 +26,9 @@ public class CreateHitMarkCommand : Command
         _dataModule.AddHitMark(_hitMarkScore, _hitMark);
 
         // NEEDS TO BE CHECKED
-        _hitMark.colour = _dataModule.ScoreToColourConversion(_hitMarkScore);
+        if(_hitMark.TryGetComponent(out Image hitMarkImage)){
+            hitMarkImage.color = _dataModule.ScoreToColourConversion(_hitMarkScore);
+        }
     }
 
     public override void Undo(){

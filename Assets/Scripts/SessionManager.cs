@@ -10,7 +10,7 @@ public class SessionManager : MonoBehaviour
 
     [SerializeField] private GameObject _passingHitMark;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         passingData = new PassingData(_passingHitMark, GameManager.UI.passingMenu);
         _dataModules = new List<DataModule>();

@@ -28,6 +28,10 @@ public class SessionMenu : GameMenu
         GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.passingMenu);
     }
 
+    public void OnDefence(){
+        GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.defenceMenu);
+    }
+
     public void OnQuitSession(){
         quitPopUp.gameObject.SetActive(true);
     }
