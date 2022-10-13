@@ -4,19 +4,40 @@ using UnityEngine;
 
 public class DefenceMenu : GameMenu
 {
-    // Start is called before the first frame update
+    [SerializeField] DefenceQualityPopUp defencePopUp;
+
+    public GameObject hitMarkParent;
+
     void Start()
     {
-
+        ClosePopUp();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public override void UpdateGraphics(){
+    }
 
+    public override void OnSuccesfullArrowDrag(Vector3 arrowPosition){
+        defencePopUp.currentMarkerPosition = arrowPosition;
+        defencePopUp.gameObject.SetActive(true);
+    }
+
+    public void Undo(){
+        GameManager.Session.defenceData.UndoLastCommand();
     }
 
     public void OnBack(){
         GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.sessionMenu);
+    }
+
+    public void ClosePopUp(){
+        defencePopUp.gameObject.SetActive(false);
+    }
+
+    public override void OnTransitionOut(){
+        ClosePopUp();
+    }
+
+    public override void OnTransitionIn(){
+        UpdateGraphics();
     }
 }

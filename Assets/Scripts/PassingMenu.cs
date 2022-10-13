@@ -16,7 +16,7 @@ public class PassingMenu : GameMenu
     // Start is called before the first frame update
     void Start()
     {
-        passingPopUp.gameObject.SetActive(false);
+        ClosePopUp();
     }
 
     public override void UpdateGraphics(){
