@@ -3083,6 +3083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 1524936188}
+  _attackPosition: 0
 --- !u!224 &748625984 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1375985023446532417, guid: 33e24ea668afc424a9348eb445207563, type: 3}
@@ -3353,6 +3354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 1524936188}
+  _attackPosition: 1
 --- !u!1001 &758195045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6221,6 +6223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 1524936188}
+  _attackPosition: 3
 --- !u!1 &1362792662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6312,6 +6315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMarkerPosition: {x: 0, y: 0, z: 0}
+  currentAttackPosition: 0
 --- !u!114 &1435383922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7257,6 +7261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 1524936188}
+  _attackPosition: 4
 --- !u!114 &1598614052 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 752294965658303218, guid: 916f51b5742f0db498d0c2cf774719c4, type: 3}
@@ -7834,6 +7839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMarkerPosition: {x: 0, y: 0, z: 0}
+  currentAttackPosition: 0
 --- !u!114 &1905661155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8485,6 +8491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 1524936188}
+  _attackPosition: 2
 --- !u!1001 &1989369746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8628,6 +8635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 308435600}
+  _attackPosition: 5
 --- !u!1 &2014108224
 GameObject:
   m_ObjectHideFlags: 0
@@ -8932,6 +8940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragIndicatorPrefab: {fileID: 4903754961779029522, guid: e73dc30cd0480cd41b96af9d37ff96d8, type: 3}
   parentMenu: {fileID: 1524936188}
+  _attackPosition: 6
 --- !u!1 &2066578064
 GameObject:
   m_ObjectHideFlags: 0

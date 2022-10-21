@@ -12,11 +12,11 @@ public class GameMenu : MonoBehaviour
 
     }
 
-    public virtual void OnSuccesfullArrowDrag(Vector3 arrowPosition){
+    public virtual void OnSuccesfullArrowDrag(Vector3 arrowPosition, AttackPosition attackPosition){
 
     }
 
     public virtual void UpdateGraphics(){
-        
+
     }
 }

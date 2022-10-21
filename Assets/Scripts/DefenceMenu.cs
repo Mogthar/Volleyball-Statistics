@@ -16,8 +16,9 @@ public class DefenceMenu : GameMenu
     public override void UpdateGraphics(){
     }
 
-    public override void OnSuccesfullArrowDrag(Vector3 arrowPosition){
+    public override void OnSuccesfullArrowDrag(Vector3 arrowPosition, AttackPosition attackPosition){
         defencePopUp.currentMarkerPosition = arrowPosition;
+        defencePopUp.currentAttackPosition = attackPosition;
         defencePopUp.gameObject.SetActive(true);
     }
 

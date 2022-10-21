@@ -5,6 +5,7 @@ using UnityEngine;
 public class PassingQualityPopUp : MonoBehaviour
 {
     public Vector3 currentMarkerPosition;
+    public AttackPosition currentAttackPosition;
 
     public void OnPassingScoreEntry(int passingScore){
         //GameManager.UI.passingMenu.CreateHitMark(currentMarkerPosition, passingScore);

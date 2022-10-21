@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class CreateHitMarkCommand : Command
 {
-    private GameObject _hitMark;
+    protected GameObject _hitMark;
 
-    private Vector3 _hitMarkPosition;
-    private int _hitMarkScore;
-    private GameObject _hitMarkPrefab;
-    private GameObject _parent;
-    private DataModule _dataModule;
+    protected Vector3 _hitMarkPosition;
+    protected int _hitMarkScore;
+    protected GameObject _hitMarkPrefab;
+    protected GameObject _parent;
+    protected DataModule _dataModule;
 
     public CreateHitMarkCommand(Vector3 position, int score, GameObject prefab, GameObject parent, DataModule module){
         _hitMarkPosition = position;
@@ -25,7 +25,6 @@ public class CreateHitMarkCommand : Command
         _hitMark = Object.Instantiate(_hitMarkPrefab, _hitMarkPosition, Quaternion.identity, _parent.transform);
         _dataModule.AddHitMark(_hitMarkScore, _hitMark);
 
-        // NEEDS TO BE CHECKED
         if(_hitMark.TryGetComponent(out Image hitMarkImage)){
             hitMarkImage.color = _dataModule.ScoreToColourConversion(_hitMarkScore);
         }

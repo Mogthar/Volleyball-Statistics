@@ -3,5 +3,7 @@ public enum AttackPosition{
     OPPOSITE_HITTER,
     MIDDLE,
     PIPE,
-    OPPO_BACKCOURT
+    OPPO_BACKCOURT,
+    SERVE,
+    FREE_BALL
 }

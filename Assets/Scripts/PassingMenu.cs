@@ -57,8 +57,9 @@ public class PassingMenu : GameMenu
         }
     }
 
-    public override void OnSuccesfullArrowDrag(Vector3 arrowPosition){
+    public override void OnSuccesfullArrowDrag(Vector3 arrowPosition, AttackPosition attackPosition){
         passingPopUp.currentMarkerPosition = arrowPosition;
+        passingPopUp.currentAttackPosition = attackPosition;
         passingPopUp.gameObject.SetActive(true);
     }
 

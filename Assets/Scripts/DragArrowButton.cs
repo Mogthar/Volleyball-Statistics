@@ -12,6 +12,7 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private float _indicatorHeight;
 
     [SerializeField] private GameMenu parentMenu;
+    [SerializeField] private AttackPosition _attackPosition;
 
     public void OnBeginDrag(PointerEventData data)
     {
@@ -56,7 +57,7 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if(raycastHit.gameObject.TryGetComponent(out Court court))
             {
                 Debug.Log("You hit the court");
-                parentMenu.OnSuccesfullArrowDrag(data.position);
+                parentMenu.OnSuccesfullArrowDrag(data.position, _attackPosition);
             }
         }
     }
