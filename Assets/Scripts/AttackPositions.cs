@@ -5,5 +5,6 @@ public enum AttackPosition{
     PIPE,
     OPPO_BACKCOURT,
     SERVE,
-    FREE_BALL
+    FREE_BALL,
+    NULL
 }

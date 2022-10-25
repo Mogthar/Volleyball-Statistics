@@ -16,6 +16,10 @@ public class GameMenu : MonoBehaviour
 
     }
 
+    public virtual void OnAttackButtonClick(AttackPosition attackPosition){
+
+    }
+
     public virtual void UpdateGraphics(){
 
     }

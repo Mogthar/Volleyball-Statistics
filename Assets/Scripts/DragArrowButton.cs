@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] private GameObject dragIndicatorPrefab;
     private GameObject _dragIndicator;
@@ -13,6 +13,20 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     [SerializeField] private GameMenu parentMenu;
     [SerializeField] private AttackPosition _attackPosition;
+
+    public void OnPointerClick(PointerEventData data){
+        if(!data.dragging){
+            GraphicRaycaster canvasRaycaster = GameManager.UI.appCanvas.GetComponent<GraphicRaycaster>();
+            List<RaycastResult> raycastHitList = new List<RaycastResult>();
+            canvasRaycaster.Raycast(data, raycastHitList);
+            foreach(RaycastResult raycastHit in raycastHitList){
+                if(raycastHit.gameObject == this.gameObject)
+                {
+                    parentMenu.OnAttackButtonClick(_attackPosition);
+                }
+            }
+        }
+    }
 
     public void OnBeginDrag(PointerEventData data)
     {
