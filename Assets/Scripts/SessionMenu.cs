@@ -28,8 +28,16 @@ public class SessionMenu : GameMenu
         GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.passingMenu);
     }
 
+    public void OnAttack(){
+        GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.attackMenu);
+    }
+
     public void OnDefence(){
         GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.defenceMenu);
+    }
+
+    public void OnService(){
+        GameManager.UI.TransitionBetweenMenus(this, GameManager.UI.servingMenu);
     }
 
     public void OnQuitSession(){

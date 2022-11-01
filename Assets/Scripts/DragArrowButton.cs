@@ -13,6 +13,7 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     [SerializeField] private GameMenu parentMenu;
     [SerializeField] private AttackPosition _attackPosition;
+    [SerializeField] private string _positionName;
 
     public void OnPointerClick(PointerEventData data){
         if(!data.dragging){
@@ -22,7 +23,7 @@ public class DragArrowButton : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             foreach(RaycastResult raycastHit in raycastHitList){
                 if(raycastHit.gameObject == this.gameObject)
                 {
-                    parentMenu.OnAttackButtonClick(_attackPosition);
+                    parentMenu.OnAttackButtonClick(_attackPosition, _positionName);
                 }
             }
         }

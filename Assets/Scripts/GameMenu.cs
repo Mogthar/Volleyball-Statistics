@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameMenu : MonoBehaviour
 {
+    public GameObject hitMarkParent;
     public virtual void OnTransitionOut(){
 
     }
@@ -16,7 +17,7 @@ public class GameMenu : MonoBehaviour
 
     }
 
-    public virtual void OnAttackButtonClick(AttackPosition attackPosition){
+    public virtual void OnAttackButtonClick(AttackPosition attackPosition, string positionName){
 
     }
 

@@ -2,19 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassingData : DataModule
+public class ServingData : DataModule
 {
-    public PassingData(GameObject hitMarkPrefab, GameMenu sisterMenu) : base(hitMarkPrefab, sisterMenu) {}
+    private int _servingErrors;
+    public ServingData(GameObject hitMarkPrefab, GameMenu sisterMenu) : base(hitMarkPrefab, sisterMenu) {
+        _servingErrors = 0;
+    }
 
     // might make this method of the parent class but would need to fix the fact that the parents for hit marks are datamodule specific
 
     public void CreateHitMark(Vector3 markPosition, int score){
-        CreateHitMarkCommand command = new CreateHitMarkCommand(markPosition, score, _hitMarkPrefab, GameManager.UI.passingMenu.hitMarkParent, this);
+        CreateHitMarkCommand command = new CreateHitMarkCommand(markPosition, score, _hitMarkPrefab, GameManager.UI.servingMenu.hitMarkParent, this);
         command.Execute();
         _commandList.Add(command);
 
         // change this to sister menu!
         _sisterMenu.UpdateGraphics();
+    }
+
+    public void LogServiceError(){
+        LogServiceErrorCommand command = new LogServiceErrorCommand(this);
+        command.Execute();
+        _commandList.Add(command);
+
+        _sisterMenu.UpdateGraphics();
+    }
+
+    public void AddServiceError(){
+        _servingErrors += 1;
+    }
+
+    public void RemoveServiceError(){
+        _servingErrors -= 1;
     }
 
     public float CalculateAverageScore(){
@@ -57,6 +76,22 @@ public class PassingData : DataModule
             numberOfPasses += _hitMarkCollection[score].Count;
         }
         return numberOfPasses;
+    }
+
+    public int CalculateTotalNumberOfServes(){
+        int totalServes = 0;
+        int totalPasses = CalculateTotalNumberOfPasses();
+        totalServes = totalPasses + _servingErrors;
+        return totalServes;
+    }
+
+    public float CalculateServingErrorPercentage(){
+        float errorPercentage = 0.0f;
+        int totalServes = CalculateTotalNumberOfServes();
+        if(totalServes > 0){
+            errorPercentage = (float) _servingErrors / totalServes;
+        }
+        return errorPercentage;
     }
 
     public override Color ScoreToColourConversion(int hitMarkScore){

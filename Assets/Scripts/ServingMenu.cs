@@ -5,10 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PassingMenu : GameMenu
+public class ServingMenu : GameMenu
 {
-    [SerializeField] PassingQualityPopUp passingPopUp;
+    [SerializeField] OppositionPassingPopUp passingPopUp;
     [SerializeField] private TMP_Text averageScoreText;
+    [SerializeField] private TMP_Text errorRateText;
     [SerializeField] private Slider[] graphColumns;
     [SerializeField] private TMP_Text[] graphColumnPercentages;
 
@@ -21,16 +22,21 @@ public class PassingMenu : GameMenu
     public override void UpdateGraphics(){
         UpdateGraphColumns();
         UpdateAverageScoreText();
+        UpdateErrorRateText();
     }
 
     void UpdateAverageScoreText()
     {
-        averageScoreText.text = "Avg score: " + GameManager.Session.passingData.CalculateAverageScore().ToString("0.00");
+        averageScoreText.text = "Avg: " + GameManager.Session.servingData.CalculateAverageScore().ToString("0.0");
+    }
+
+    void UpdateErrorRateText(){
+        errorRateText.text = "Error: " + GameManager.Session.servingData.CalculateServingErrorPercentage().ToString("0.0");
     }
 
     void UpdateGraphColumns()
     {
-        float[] passingPercentages = GameManager.Session.passingData.CalculatePassingPercentages(graphColumns.Length);
+        float[] passingPercentages = GameManager.Session.servingData.CalculatePassingPercentages(graphColumns.Length);
         float maxPercentage = 0.0f;
         // find the max percentage - there should be a function for that!!!
         for(int i = 0; i < graphColumns.Length; i++)
@@ -63,7 +69,7 @@ public class PassingMenu : GameMenu
     }
 
     public void Undo(){
-        GameManager.Session.passingData.UndoLastCommand();
+        GameManager.Session.servingData.UndoLastCommand();
     }
 
     public void ClosePopUp(){

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DefenceMenu : GameMenu
+public class AttackMenu : GameMenu
 {
-    [SerializeField] DefenceQualityPopUp defencePopUp;
+    [SerializeField] AttackQualityPopUp attackPopUp;
     [SerializeField] private TMP_Text defenceScoreText;
     [SerializeField] private TMP_Text blockScoreText;
     [SerializeField] private TMP_Text positionNameText;
@@ -20,34 +20,34 @@ public class DefenceMenu : GameMenu
     }
 
     public override void UpdateGraphics(){
-        int[] defenceScore = GameManager.Session.defenceData.CalculateDefenceScore(_activeAttackPosition);
-        int[] blockScore = GameManager.Session.defenceData.CalculateBlockingScore(_activeAttackPosition);
-        defenceScoreText.text = defenceScore[0] + " | " + defenceScore[1];
-        blockScoreText.text = blockScore[0] + " | " + blockScore[1];
+        int[] defenceScore = GameManager.Session.attackData.CalculateDefenceScore(_activeAttackPosition);
+        int[] blockScore = GameManager.Session.attackData.CalculateBlockingScore(_activeAttackPosition);
+        defenceScoreText.text = defenceScore[1] + " | " + defenceScore[0];
+        blockScoreText.text = blockScore[1] + " | " + blockScore[0];
         positionNameText.text = _activeAttackPositionName;
     }
 
     public override void OnSuccesfullArrowDrag(Vector3 arrowPosition, AttackPosition attackPosition){
-        defencePopUp.currentMarkerPosition = arrowPosition;
-        defencePopUp.currentAttackPosition = attackPosition;
-        defencePopUp.gameObject.SetActive(true);
+        attackPopUp.currentMarkerPosition = arrowPosition;
+        attackPopUp.currentAttackPosition = attackPosition;
+        attackPopUp.gameObject.SetActive(true);
     }
 
     public override void OnAttackButtonClick(AttackPosition attackPosition, string positionName){
         if(_activeAttackPosition == attackPosition){
             _activeAttackPosition = AttackPosition.NULL;
             _activeAttackPositionName = "Total";
-            GameManager.Session.defenceData.ShowAllAttackHitMarks();
+            GameManager.Session.attackData.ShowAllAttackHitMarks();
         } else {
             _activeAttackPosition = attackPosition;
             _activeAttackPositionName = positionName;
-            GameManager.Session.defenceData.ShowSpecificAttackHitMarks(attackPosition);
+            GameManager.Session.attackData.ShowSpecificAttackHitMarks(attackPosition);
         }
         UpdateGraphics();
     }
 
     public void Undo(){
-        GameManager.Session.defenceData.UndoLastCommand();
+        GameManager.Session.attackData.UndoLastCommand();
     }
 
     public void OnBack(){
@@ -55,7 +55,7 @@ public class DefenceMenu : GameMenu
     }
 
     public void ClosePopUp(){
-        defencePopUp.gameObject.SetActive(false);
+        attackPopUp.gameObject.SetActive(false);
     }
 
     public override void OnTransitionOut(){
