@@ -39,6 +39,10 @@ public class SessionManager : MonoBehaviour
 
     private void RestartDataModules(){
         if(_dataModules != null){
+            foreach(DataModule module in _dataModules)
+            {
+                module.ClearModule();
+            }
             _dataModules.Clear();
         }
 

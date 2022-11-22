@@ -42,8 +42,21 @@ public class DataModule
         _hitMarkCollection[score].Remove(hitMark);
     }
 
-    // WHAT FORMAT IS COLOUR???
     public virtual Color ScoreToColourConversion(int hitMarkScore){
         return new Color(1.0f, 0.0f, 0.0f);
+    }
+
+    public void ClearModule(){
+        _commandList.Clear();
+        foreach(int score in _hitMarkCollection.Keys){
+            foreach(GameObject hitMark in _hitMarkCollection[score]){
+                Object.Destroy(hitMark);
+            }
+            _hitMarkCollection[score].Clear();
+        }
+    }
+
+    public virtual void SaveData(){
+        
     }
 }
